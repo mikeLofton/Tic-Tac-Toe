@@ -6,5 +6,33 @@ namespace Tic_Tac_Toe
 {
     class Game
     {
+        private bool _gameOver;
+
+        public void Run()
+        {
+            Start();
+
+            while (!_gameOver)
+            {
+                Update();
+            }
+
+            End();
+        }
+
+        private void Start()
+        {
+
+        }
+
+        private void Update()
+        {
+
+        }
+
+        private void End()
+        {
+
+        }
     }
 }
