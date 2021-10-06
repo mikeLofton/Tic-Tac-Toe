@@ -80,6 +80,7 @@ namespace Tic_Tac_Toe
         /// <returns>Return false if the indicies are out of range.</returns>
         public bool SetToken(char token, int posX, int posY)
         {
+            Console.WriteLine("Choose a number on the grid");
             int mark = Game.GetInput();
 
             if (mark >= 0 && mark <= 9)
