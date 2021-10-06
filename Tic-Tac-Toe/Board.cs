@@ -30,6 +30,9 @@ namespace Tic_Tac_Toe
         /// </summary>
         public void Update()
         {
+            CheckWinner(_player1Token);
+            CheckWinner(_player2Token);
+
             SetToken(_currentToken, 1, 1);
 
             if (_currentToken == _player1Token)
@@ -83,7 +86,37 @@ namespace Tic_Tac_Toe
         /// <param name="token"></param>
         /// <returns></returns>
         private bool CheckWinner(char token)
-        {  
+        {
+            for (int i = 0; i < _board.GetLength(0); i++)
+            {
+              if (_board[i, 0] == token && _board[i, 1] == token && _board[i, 2] == token)
+              {
+                    Console.WriteLine($"{token} WINS!");
+                    return true;
+              }
+            }
+
+            for (int j = 0; j < _board.GetLength(1); j++)
+            {
+                if (_board[0, j] == token && _board[1, j] == token && _board[2, j] == token)
+                {
+                    Console.WriteLine($"{token} WINS!");
+                    return true;
+                }
+            }
+
+            if (_board[0, 0] == token && _board[1, 1] == token && _board[2, 2] == token)
+            {
+                Console.WriteLine($"{token} WINS!");
+                return true;
+            }
+            else if (_board[0, 2] == token && _board[1, 1] == token && _board[2, 0] == token)
+            {
+                Console.WriteLine($"{token} WINS!");
+                return true;
+            }
+         
+
             return false;
         }
 
@@ -92,7 +125,16 @@ namespace Tic_Tac_Toe
         /// </summary>
         public void ClearBoard()
         {
+            Console.WriteLine("Do you want to play again? \n 1. Yes \n 2. No");
+            int input = Game.GetInput();
+            if (input == 0)
+            {
 
+            }
+            else if (input == 1)
+            {
+                Game._gameOver = true;
+            }
         }
     }
 }

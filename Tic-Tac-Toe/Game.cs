@@ -6,7 +6,7 @@ namespace Tic_Tac_Toe
 {
     class Game
     {
-        private static bool _gameOver = false;
+        public static bool _gameOver = false;
         private Board _gameBoard;
 
         /// <summary>
