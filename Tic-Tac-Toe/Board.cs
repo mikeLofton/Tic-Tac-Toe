@@ -142,6 +142,7 @@ namespace Tic_Tac_Toe
                 return true;
             }
 
+            //Tie
             if (_turnCount >= 9)
             {
                 Console.WriteLine("Draw");
