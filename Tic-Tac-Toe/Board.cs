@@ -144,6 +144,9 @@ namespace Tic_Tac_Toe
             int input = Game.GetInput();
             if (input == 0)
             {
+                Console.Clear();
+                _currentToken = _player1Token;
+                _board = new char[3, 3] { { '1', '2', '3' }, { '4', '5', '6' }, { '7', '8', '9' } };
                 _currentScene = 0;
             }
             else if (input == 1)
