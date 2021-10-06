@@ -30,9 +30,14 @@ namespace Tic_Tac_Toe
         /// </summary>
         public void Update()
         {
-            if(Game.GetInput() == 1)
+            int mark = Game.GetInput();
+
+            if(mark > -1)
             {
-                _board[0, 0] = _currentToken;
+                int indexX = mark / 3;
+                int indexY = mark % 3;
+
+                _board[indexX, indexY] = _currentToken;
             }
 
             if (_currentToken == _player1Token)

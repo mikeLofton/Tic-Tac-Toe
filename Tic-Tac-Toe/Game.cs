@@ -65,6 +65,8 @@ namespace Tic_Tac_Toe
             if (!int.TryParse(Console.ReadLine(), out choice))
                 choice = -1;
 
+            choice--;
+
             return choice;
         }
     }
