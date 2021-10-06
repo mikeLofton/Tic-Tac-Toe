@@ -30,15 +30,7 @@ namespace Tic_Tac_Toe
         /// </summary>
         public void Update()
         {
-            int mark = Game.GetInput();
-
-            if(mark > -1)
-            {
-                int indexX = mark / 3;
-                int indexY = mark % 3;
-
-                _board[indexX, indexY] = _currentToken;
-            }
+            SetToken(_currentToken, 1, 1);
 
             if (_currentToken == _player1Token)
                 _currentToken = _player2Token;
@@ -72,6 +64,16 @@ namespace Tic_Tac_Toe
         /// <returns>Return false if the indicies are out of range.</returns>
         public bool SetToken(char token, int posX, int posY)
         {
+            int mark = Game.GetInput();
+
+            if (mark > -1)
+            {
+                posX = mark / 3;
+                posY = mark % 3;
+
+                _board[posX, posY] = token;
+                return true;
+            }         
             return false;
         }
 
@@ -81,7 +83,7 @@ namespace Tic_Tac_Toe
         /// <param name="token"></param>
         /// <returns></returns>
         private bool CheckWinner(char token)
-        {
+        {  
             return false;
         }
 
