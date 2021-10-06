@@ -11,6 +11,7 @@ namespace Tic_Tac_Toe
         private char _currentToken;
         private char[,] _board;
         private int _currentScene = 0;
+        private int _turnCount = 0;
 
         /// <summary>
         /// Initializes player tokens and the game board
@@ -37,6 +38,7 @@ namespace Tic_Tac_Toe
                     CheckWinner(_player1Token);
                     CheckWinner(_player2Token);
                     Console.WriteLine($"Current Turn: {_currentToken}");
+                    Console.WriteLine($"Turn Count: {_turnCount}");
                     SetToken(_currentToken, 1, 1);
 
                     if (_currentToken == _player1Token)
@@ -80,14 +82,20 @@ namespace Tic_Tac_Toe
         {
             int mark = Game.GetInput();
 
-            if (mark > -1)
+            if (mark >= 0 && mark <= 9)
             {
                 posX = mark / 3;
                 posY = mark % 3;
 
                 _board[posX, posY] = token;
+                _turnCount++;
                 return true;
-            }         
+            }   
+            else
+            {
+                Console.WriteLine("Invalid Input");
+                Console.ReadKey(true);
+            }
             return false;
         }
 
@@ -98,6 +106,7 @@ namespace Tic_Tac_Toe
         /// <returns></returns>
         private bool CheckWinner(char token)
         {
+            //Win Vertically
             for (int i = 0; i < _board.GetLength(0); i++)
             {
               if (_board[i, 0] == token && _board[i, 1] == token && _board[i, 2] == token)
@@ -108,6 +117,7 @@ namespace Tic_Tac_Toe
               }
             }
 
+            //Win Horizontally
             for (int j = 0; j < _board.GetLength(1); j++)
             {
                 if (_board[0, j] == token && _board[1, j] == token && _board[2, j] == token)
@@ -118,6 +128,7 @@ namespace Tic_Tac_Toe
                 }
             }
 
+            //Win Diagonally
             if (_board[0, 0] == token && _board[1, 1] == token && _board[2, 2] == token)
             {
                 Console.WriteLine($"{token} WINS!");
@@ -127,6 +138,13 @@ namespace Tic_Tac_Toe
             else if (_board[0, 2] == token && _board[1, 1] == token && _board[2, 0] == token)
             {
                 Console.WriteLine($"{token} WINS!");
+                _currentScene = 1;
+                return true;
+            }
+
+            if (_turnCount >= 9)
+            {
+                Console.WriteLine("Draw");
                 _currentScene = 1;
                 return true;
             }
@@ -147,6 +165,7 @@ namespace Tic_Tac_Toe
                 Console.Clear();
                 _currentToken = _player1Token;
                 _board = new char[3, 3] { { '1', '2', '3' }, { '4', '5', '6' }, { '7', '8', '9' } };
+                _turnCount = 0;
                 _currentScene = 0;
             }
             else if (input == 1)
