@@ -38,7 +38,6 @@ namespace Tic_Tac_Toe
                     CheckWinner(_player1Token);
                     CheckWinner(_player2Token);
                     Console.WriteLine($"Current Turn: {_currentToken}");
-                    Console.WriteLine($"Turn Count: {_turnCount}");
                     SetToken(_currentToken, 1, 1);
 
                     if (_currentToken == _player1Token)
